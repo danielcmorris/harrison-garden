@@ -1,5 +1,5 @@
 {
-  "name": "aurick",
+  "name": "harrison-garden",
   "version": "2.7.0",
   "scripts": {
     "ng": "ng",
@@ -21,11 +21,9 @@
     "@angular/platform-browser-dynamic": "^17.0.7",
     "@angular/router": "^17.0.7",
     "@fortawesome/fontawesome-free": "^6.5.1",
-    "animate.css": "^4.1.1",
     "bootstrap": "^5.3.2",
     "jquery": "^3.7.1",
     "magnific-popup": "^1.1.0",
-    "popper.js": "^1.16.1",
     "rxjs": "~7.8.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"

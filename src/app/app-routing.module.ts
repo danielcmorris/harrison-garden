@@ -12,14 +12,11 @@ const routes: Routes = [
 
 @NgModule({
     imports: [RouterModule.forRoot(routes,  {
-        anchorScrolling: 'enabled',   // 👈 this enables anchor link scrolling
+        anchorScrolling: 'enabled',
         onSameUrlNavigation: 'ignore',
-        scrollPositionRestoration: 'enabled' // (optional) restores scroll on navigation
+        scrollPositionRestoration: 'enabled'
     }
 )],
     exports: [RouterModule]
 })
 export class AppRoutingModule { }
-
-
-

@@ -28,7 +28,6 @@
             ],
             "styles": [
               "node_modules/bootstrap/scss/bootstrap.scss",
-              "node_modules/animate.css/animate.min.css",
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "node_modules/magnific-popup/dist/magnific-popup.css",
               "src/assets/css/swiper-bundle.min.css",
@@ -37,8 +36,6 @@
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/popper.js/dist/umd/popper.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js",
               "node_modules/magnific-popup/dist/jquery.magnific-popup.min.js",
               "src/assets/js/swiper-bundle.min.js"
             ],

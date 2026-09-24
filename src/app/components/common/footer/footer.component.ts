@@ -6,6 +6,7 @@ import { Component, HostListener } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent {
+  readonly year = new Date().getFullYear();
   showBackToTop = window.scrollY > 300;
 
   @HostListener('window:scroll')

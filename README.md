@@ -1,22 +1,16 @@
-# Aurick
+# Harrison Garden
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.25.
+Property website for the garden apartment at 2723 Harrison Street in San Francisco. Built with Angular 17 and TypeScript 5.2; the deployment workflow uses Node.js 20.
 
-## Notes on the property
-### Images
-* https://photos.google.com/share/AF1QipPRaCJCZ83E_nblSbG16hpEP63yx1v5Vk_AwlzKGQZUuebLn3TA0WQnJsO8V0QnpQ?key=bENHQWo3dnY5MWhndGo4bWpnbl9xd2lLMDIxeU9B
+## Development
 
-## Development server
+Use Node.js 20, run `npm ci`, then `npm start`. Open `http://localhost:4200/`; source changes reload automatically.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+The homepage contains the slideshow, About section, photo gallery, and embedded Google map. Navigation uses Angular fragments. Swiper and Magnific Popup initialize and clean up with their owning components. The mobile menu and scroll controls use Angular bindings.
 
 ## Build
 
-Run `npm run build -- --configuration production` to build the production site. The build artifacts will be stored in `dist/aurick/`.
+Run `npm run build -- --configuration production`. Output remains in `dist/aurick/` for compatibility with the configured deployment. The internal Angular project name is also retained as `aurick`.
 
 ## Deployment
 
@@ -28,14 +22,19 @@ The workflow runs `npm ci`, builds the production site, and uploads only `dist/a
 
 Deployments run one at a time. The FTP action tracks uploaded files in `.ftp-deploy-sync-state.json` on the server so subsequent deployments can update changed files and remove previously deployed files that are no longer in the build. Keep that state file on the server.
 
-## Running unit tests
+## Tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- `npm run typecheck:test` checks test compilation.
+- `npm test` starts interactive Karma tests.
+- `npm run test:ci` runs the unit suite once in headless Chrome. Set `CHROME_BIN` if Chrome is not on the default path.
+- Install browser dependencies once with `npx playwright install --with-deps chromium`, then run `npm run test:e2e` to build and test desktop and mobile Chromium. Tests cover navigation, autoplay/pause, keyboard gallery controls and focus, image loading, redirects, and retained integrations. Screenshots and failure traces are written to `test-results/`.
 
-## Running end-to-end tests
+Deployment runs test compilation and unit tests before building and uploading. Run the browser suite locally for interaction changes.
 
-Run `npx playwright install --with-deps chromium` once, then `npm run test:e2e`. Playwright tests the production build in desktop and mobile Chromium, including fragment navigation, autoplay, keyboard gallery interaction, image loading, retired URL redirects, and preserved integrations. Failure traces and screenshots are written to `test-results/`.
+## Images
 
-## Further help
+Gallery thumbnails are WebP images sized to at most 800px wide; popup versions are at most 1920px wide. Thumbnails declare dimensions and load lazily. Original property photographs are retained in `src/assets/img/apt/` for future edits.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Maintenance
+
+See [TODO.md](TODO.md) for the cleanup checklist and work log.

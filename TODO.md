@@ -46,7 +46,7 @@ Follow-up tasks from the code review. These are planned changes, not completed f
   - Make the back-to-top control a keyboard-accessible button with an accessible name.
   - Verify keyboard navigation and gallery behavior.
 
-- [ ] Remove small template leftovers after functional cleanup.
+- [x] Remove small template leftovers after functional cleanup.
   - Delete commented-out sections, unused imports/properties, empty constructors, and empty lifecycle methods.
   - Correct visible copy typos and review the hard-coded copyright year.
   - Update README template branding and outdated version information.
@@ -72,3 +72,4 @@ Follow-up tasks from the code review. These are planned changes, not completed f
 ## Additional issues found
 
 - [ ] Fix direct visits to retired demo URLs on the production host: Angular redirects work after the app loads, but the host currently returns HTTP 404 before Angular loads. Ship static redirect landing pages without changing unknown server configuration.
+- Template cleanup: removed commented demo markup, empty About lifecycle, stale metadata/scrollspy, obsolete polyfill notes, unused animation styles and Bootstrap/Popper JavaScript; fixed copy, dynamic copyright, and README branding/runtime/test guidance. Initial JS/CSS now 827.49 kB (estimated transfer 185.20 kB). Seven unit tests and 16 browser checks pass.
