@@ -24,7 +24,7 @@ The workflow in [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) b
 
 In GitHub repository **Settings → Secrets and variables → Actions**, set the repository secret `FTP_PASSWORD` to the password for `deploy@harrisongarden.com`.
 
-The workflow runs `npm ci`, builds the production site, and uploads only `dist/aurick/` to `harrisongarden.com` over FTP on port 21. The destination defaults to `./`, relative to the FTP account's login directory. If that is not the website's document root, set the repository variable `FTP_SERVER_DIR` to the correct directory, including a trailing `/` (for example, `/public_html/`).
+The workflow runs `npm ci`, builds the production site, and uploads only `dist/aurick/` to `ftp.harrisongarden.com` over FTP on port 21. The destination defaults to `./`, relative to the FTP account's login directory. If that is not the website's document root, set the repository variable `FTP_SERVER_DIR` to the correct directory, including a trailing `/` (for example, `/public_html/`).
 
 Deployments run one at a time. The FTP action tracks uploaded files in `.ftp-deploy-sync-state.json` on the server so subsequent deployments can update changed files and remove previously deployed files that are no longer in the build. Keep that state file on the server.
 

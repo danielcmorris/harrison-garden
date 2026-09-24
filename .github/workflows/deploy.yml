@@ -47,7 +47,7 @@ jobs:
       - name: Upload site over FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:
-          server: harrisongarden.com
+          server: ftp.harrisongarden.com
           username: deploy@harrisongarden.com
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftp
