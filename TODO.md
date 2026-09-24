@@ -18,7 +18,7 @@ Follow-up tasks from the code review. These are planned changes, not completed f
 
 ## Priority 2: Remove template leftovers
 
-- [ ] Remove demo routes `/home-2`, `/home-3`, and `/home-4`.
+- [x] Remove demo routes `/home-2`, `/home-3`, and `/home-4`.
   - Remove their components and module declarations, then audit shared components before deleting anything else.
   - Remove template property listings, placeholder contacts, and nonfunctional demo forms with those pages.
   - Remove assets referenced only by the demos, including `src/assets/video/Home.mp4` (roughly 5 MB).
@@ -62,3 +62,4 @@ Follow-up tasks from the code review. These are planned changes, not completed f
 - Lifecycle cleanup: component-owned Swiper and gallery setup/teardown; Angular scroll handlers and mobile menu state; removed duplicate script loading and unconditional scroll reset. Production build checked; browser interaction checks follow in completion validation.
 - Found additional test setup defects: Karma references an uninstalled Istanbul reporter and test discovery needs verification. Included in the test repair task.
 - Gallery optimization: eight 800px WebP thumbnails total 553,026 bytes versus 12,309,801 bytes previously (95.5% reduction); separate up-to-1920px WebP popup images, lazy loading, decoding hints, and intrinsic dimensions. Browser visual checks included in final validation.
+- Demo cleanup: retired URLs (and unknown routes) redirect to the real homepage; removed 13 unused components, demo-only style sections, 29 unreferenced stock images, and Home.mp4. Actual property photos remain available.
