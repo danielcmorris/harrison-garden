@@ -71,5 +71,6 @@ Follow-up tasks from the code review. These are planned changes, not completed f
 
 ## Additional issues found
 
-- [ ] Fix direct visits to retired demo URLs on the production host: Angular redirects work after the app loads, but the host currently returns HTTP 404 before Angular loads. Ship static redirect landing pages without changing unknown server configuration.
+- [x] Fix direct visits to retired demo URLs on the production host: Angular redirects work after the app loads, but the host currently returns HTTP 404 before Angular loads. Ship static redirect landing pages without changing unknown server configuration.
 - Template cleanup: removed commented demo markup, empty About lifecycle, stale metadata/scrollspy, obsolete polyfill notes, unused animation styles and Bootstrap/Popper JavaScript; fixed copy, dynamic copyright, and README branding/runtime/test guidance. Initial JS/CSS now 827.49 kB (estimated transfer 185.20 kB). Seven unit tests and 16 browser checks pass.
+- Direct URL fix: shipped static redirect pages for all three retired demo paths. Production-build browser tests now use a static server without SPA fallback and check both trailing-slash and non-trailing-slash URLs. Live verification follows deployment.

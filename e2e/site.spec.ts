@@ -61,7 +61,7 @@ test('gallery images load with reserved dimensions and no horizontal overflow', 
 });
 
 test('retired routes redirect to Harrison home', async ({ page }) => {
-  for (const route of ['/home-2', '/home-3', '/home-4']) {
+  for (const route of ['/home-2', '/home-3', '/home-4', '/home-2/', '/home-3/', '/home-4/']) {
     await page.goto(route);
     await expect(page).toHaveURL('http://127.0.0.1:4300/');
     await expect(page.locator('.home-slides')).toBeVisible();

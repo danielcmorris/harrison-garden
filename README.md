@@ -38,3 +38,5 @@ Gallery thumbnails are WebP images sized to at most 800px wide; popup versions a
 ## Maintenance
 
 See [TODO.md](TODO.md) for the cleanup checklist and work log.
+
+Retired `/home-2`, `/home-3`, and `/home-4` URLs have static redirect pages copied from `src/redirects/`, so direct visits work on the FTP host without a server rewrite rule. The browser test server deliberately has no SPA fallback.

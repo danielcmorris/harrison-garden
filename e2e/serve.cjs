@@ -1,4 +1,4 @@
-// Serve the production build with the same SPA fallback required from the web host.
+// Match the production static host: directory indexes, no blanket SPA fallback.
 const http = require('node:http');
 const fs = require('node:fs');
 const path = require('node:path');
@@ -11,7 +11,8 @@ http.createServer((req, res) => {
     res.writeHead(403).end();
     return;
   }
-  const target = fs.existsSync(file) && fs.statSync(file).isFile() ? file : path.extname(file) ? null : path.join(root, 'index.html');
+  const candidate = fs.existsSync(file) && fs.statSync(file).isDirectory() ? path.join(file, 'index.html') : file;
+  const target = fs.existsSync(candidate) && fs.statSync(candidate).isFile() ? candidate : null;
   if (!target) { res.writeHead(404).end(); return; }
   res.setHeader('Content-Type', types[path.extname(target)] || 'application/octet-stream');
   fs.createReadStream(target).pipe(res);

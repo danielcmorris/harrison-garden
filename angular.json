@@ -24,7 +24,12 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*.html",
+                "input": "src/redirects",
+                "output": "/"
+              }
             ],
             "styles": [
               "node_modules/bootstrap/scss/bootstrap.scss",
