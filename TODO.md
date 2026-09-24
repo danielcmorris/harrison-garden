@@ -24,7 +24,7 @@ Follow-up tasks from the code review. These are planned changes, not completed f
   - Remove assets referenced only by the demos, including `src/assets/video/Home.mp4` (roughly 5 MB).
   - Decide how retired URLs should redirect and verify the actual Harrison homepage remains intact.
 
-- [ ] Remove the unused Google Maps JavaScript API script from `src/index.html`.
+- [x] Remove the unused Google Maps JavaScript API script from `src/index.html`.
   - The current map uses an iframe; no Maps JavaScript API usage was found during review.
   - Preserve the map iframe and Google Analytics tag `G-0B83PWH64H`.
 
@@ -63,3 +63,4 @@ Follow-up tasks from the code review. These are planned changes, not completed f
 - Found additional test setup defects: Karma references an uninstalled Istanbul reporter and test discovery needs verification. Included in the test repair task.
 - Gallery optimization: eight 800px WebP thumbnails total 553,026 bytes versus 12,309,801 bytes previously (95.5% reduction); separate up-to-1920px WebP popup images, lazy loading, decoding hints, and intrinsic dimensions. Browser visual checks included in final validation.
 - Demo cleanup: retired URLs (and unknown routes) redirect to the real homepage; removed 13 unused components, demo-only style sections, 29 unreferenced stock images, and Home.mp4. Actual property photos remain available.
+- Removed the unused Maps JavaScript API script; verified the gallery map iframe and both Analytics ID references remain.
