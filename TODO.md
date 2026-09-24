@@ -10,7 +10,7 @@ Follow-up tasks from the code review. These are planned changes, not completed f
   - Check repeated Home/About/Gallery navigation, slideshow autoplay, gallery popups, sticky navigation, and back-to-top behavior.
   - Preserve Angular fragment scrolling; review the unconditional `window.scrollTo(0, 0)` call.
 
-- [ ] Optimize gallery images.
+- [x] Optimize gallery images.
   - The bedroom, shower, and sink images displayed in `gallery.component.html` total roughly 10 MB.
   - Generate appropriately sized thumbnails and WebP variants while retaining suitable full-size popup images.
   - Add lazy loading to below-the-fold images and explicit dimensions where practical.
@@ -61,3 +61,4 @@ Follow-up tasks from the code review. These are planned changes, not completed f
 
 - Lifecycle cleanup: component-owned Swiper and gallery setup/teardown; Angular scroll handlers and mobile menu state; removed duplicate script loading and unconditional scroll reset. Production build checked; browser interaction checks follow in completion validation.
 - Found additional test setup defects: Karma references an uninstalled Istanbul reporter and test discovery needs verification. Included in the test repair task.
+- Gallery optimization: eight 800px WebP thumbnails total 553,026 bytes versus 12,309,801 bytes previously (95.5% reduction); separate up-to-1920px WebP popup images, lazy loading, decoding hints, and intrinsic dimensions. Browser visual checks included in final validation.
