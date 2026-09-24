@@ -1,6 +1,6 @@
 # Harrison Garden cleanup
 
-Follow-up tasks from the code review. These are planned changes, not completed fixes.
+Code-review cleanup completed September 24, 2026. Checked items are implemented and validated; see CLEANUP_REPORT.md for results and verification limits.
 
 ## Priority 1: Navigation and page weight
 
@@ -54,8 +54,8 @@ Follow-up tasks from the code review. These are planned changes, not completed f
 ## Completion checks
 
 - [x] Run a clean dependency install and production build.
-- [ ] Verify desktop and mobile navigation, slideshow, gallery, map, and Analytics tag preservation.
-- [ ] Confirm FTP deployment still uploads `dist/aurick/` to `ftp.harrisongarden.com` using `FTP_PASSWORD` and the configured destination directory.
+- [x] Verify desktop and mobile navigation, slideshow, gallery, map, and Analytics tag preservation.
+- [x] Confirm FTP deployment still uploads `dist/aurick/` to `ftp.harrisongarden.com` using `FTP_PASSWORD` and the configured destination directory.
 
 ## Work log
 
@@ -68,9 +68,17 @@ Follow-up tasks from the code review. These are planned changes, not completed f
 - Replaced the missing Protractor target with Playwright against the production build. All 12 desktop/mobile Chromium checks pass, including repeated fragments without duplicate Swiper instances, autoplay, keyboard gallery/focus restoration, loaded images, retired redirects, and integration preservation.
 - Browser review found the map too short on narrow screens; set a 320px minimum height as part of retained-component accessibility cleanup. Added a slideshow pause/play control and respect for reduced-motion preferences.
 - Accessibility validation: seven unit tests and 16 desktop/mobile browser checks pass, including keyboard back-to-top, gallery focus restoration, slideshow pause/play, and reduced motion. Reviewed desktop/mobile gallery screenshots.
+- Template cleanup: removed commented demo markup, empty About lifecycle, stale metadata/scrollspy, obsolete polyfill notes, unused animation styles and Bootstrap/Popper JavaScript; fixed copy, dynamic copyright, and README branding/runtime/test guidance. Initial JS/CSS now 827.49 kB (estimated transfer 185.20 kB). Seven unit tests and 16 browser checks pass.
 
 ## Additional issues found
 
 - [x] Fix direct visits to retired demo URLs on the production host: Angular redirects work after the app loads, but the host currently returns HTTP 404 before Angular loads. Ship static redirect landing pages without changing unknown server configuration.
-- Template cleanup: removed commented demo markup, empty About lifecycle, stale metadata/scrollspy, obsolete polyfill notes, unused animation styles and Bootstrap/Popper JavaScript; fixed copy, dynamic copyright, and README branding/runtime/test guidance. Initial JS/CSS now 827.49 kB (estimated transfer 185.20 kB). Seven unit tests and 16 browser checks pass.
 - Direct URL fix: shipped static redirect pages for all three retired demo paths. Production-build browser tests now use a static server without SPA fallback and check both trailing-slash and non-trailing-slash URLs. Live verification follows deployment.
+
+## Final validation
+
+- Final clean npm ci, test compilation, seven Chrome unit tests, and production build pass on Node 20.20.2. Sixteen desktop/mobile Playwright checks pass.
+- Live desktop (1440px) and mobile (390px) checks confirm gallery interaction, keyboard focus, back-to-top, map visibility, Analytics tag, no horizontal overflow, and zero application errors. Each viewport transferred exactly 553,026 thumbnail bytes.
+- FTP workflow retains dist/aurick/, ftp.harrisongarden.com, FTP_PASSWORD, and FTP_SERVER_DIR with ./ fallback. Successful deployments verified through GitHub Actions.
+- Nonblocking toolchain notes: two existing vendor selectors are skipped during critical CSS inlining; full stylesheets remain emitted. npm reports transitive dependency deprecation notices. Details and browser coverage limits are in CLEANUP_REPORT.md.
+- Final implementation deployment d52b96e succeeded (GitHub Actions run 35968036595). Live browser checks confirm all six retired-URL variants reach the Harrison homepage. All checklist items are complete.
