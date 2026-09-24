@@ -16,7 +16,17 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `npm run build -- --configuration production` to build the production site. The build artifacts will be stored in `dist/aurick/`.
+
+## Deployment
+
+The workflow in [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) builds and deploys the site on every push to `master`. It can also be started from **Actions → Deploy Harrison Garden → Run workflow** with `master` selected.
+
+In GitHub repository **Settings → Secrets and variables → Actions**, set the repository secret `FTP_PASSWORD` to the password for `deploy@harrisongarden.com`.
+
+The workflow runs `npm ci`, builds the production site, and uploads only `dist/aurick/` to `harrisongarden.com` over FTP on port 21. The destination defaults to `./`, relative to the FTP account's login directory. If that is not the website's document root, set the repository variable `FTP_SERVER_DIR` to the correct directory, including a trailing `/` (for example, `/public_html/`).
+
+Deployments run one at a time. The FTP action tracks uploaded files in `.ftp-deploy-sync-state.json` on the server so subsequent deployments can update changed files and remove previously deployed files that are no longer in the build. Keep that state file on the server.
 
 ## Running unit tests
 
