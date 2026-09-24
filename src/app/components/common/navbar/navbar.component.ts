@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
+  sticky = window.scrollY > 120;
+  menuOpen = false;
 
-  constructor() { }
-
-  ngOnInit() {
+  @HostListener('window:scroll')
+  onScroll(): void {
+    this.sticky = window.scrollY > 120;
   }
-
 }

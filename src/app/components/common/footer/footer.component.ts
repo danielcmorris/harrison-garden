@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent {
+  showBackToTop = window.scrollY > 300;
 
-  constructor() { }
-
-  ngOnInit() {
+  @HostListener('window:scroll')
+  onScroll(): void {
+    this.showBackToTop = window.scrollY > 300;
   }
 
+  backToTop(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }
