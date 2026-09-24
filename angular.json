@@ -111,7 +111,11 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/magnific-popup/dist/jquery.magnific-popup.min.js",
+              "src/assets/js/swiper-bundle.min.js"
+            ]
           }
         },
         "e2e": {

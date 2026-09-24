@@ -30,7 +30,7 @@ Follow-up tasks from the code review. These are planned changes, not completed f
 
 ## Priority 3: Tests and maintenance
 
-- [ ] Repair the test setup.
+- [x] Repair the test setup.
   - Replace starter assertions in `src/app/app.component.spec.ts` that expect an `aurick` title and starter-page markup.
   - Provide the actual component dependencies and account for UI plugin initialization in tests.
   - Resolve Node type compatibility with TypeScript 5.2: the recent lockfile repair selected `@types/node` 26, and `tsc --project tsconfig.spec.json --noEmit` fails in those definitions.
@@ -53,7 +53,7 @@ Follow-up tasks from the code review. These are planned changes, not completed f
 
 ## Completion checks
 
-- [ ] Run a clean dependency install and production build.
+- [x] Run a clean dependency install and production build.
 - [ ] Verify desktop and mobile navigation, slideshow, gallery, map, and Analytics tag preservation.
 - [ ] Confirm FTP deployment still uploads `dist/aurick/` to `ftp.harrisongarden.com` using `FTP_PASSWORD` and the configured destination directory.
 
@@ -64,3 +64,4 @@ Follow-up tasks from the code review. These are planned changes, not completed f
 - Gallery optimization: eight 800px WebP thumbnails total 553,026 bytes versus 12,309,801 bytes previously (95.5% reduction); separate up-to-1920px WebP popup images, lazy loading, decoding hints, and intrinsic dimensions. Browser visual checks included in final validation.
 - Demo cleanup: retired URLs (and unknown routes) redirect to the real homepage; removed 13 unused components, demo-only style sections, 29 unreferenced stock images, and Home.mp4. Actual property photos remain available.
 - Removed the unused Maps JavaScript API script; verified the gallery map iframe and both Analytics ID references remain.
+- Test repair: pinned @types/node 20.11.30, fixed Karma coverage reporter, enabled fixture teardown, loaded real UI plugins in the test target, and replaced starter specs with seven passing Chrome tests. Clean npm ci and TypeScript test compilation pass on Node 20.20.2; CI now checks types and runs tests before deployment.
