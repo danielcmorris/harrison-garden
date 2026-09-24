@@ -36,7 +36,7 @@ Follow-up tasks from the code review. These are planned changes, not completed f
   - Resolve Node type compatibility with TypeScript 5.2: the recent lockfile repair selected `@types/node` 26, and `tsc --project tsconfig.spec.json --noEmit` fails in those definitions.
   - Verify a clean `npm ci`, test compilation, meaningful tests, and the production build using the workflow runtime.
 
-- [ ] Remove or replace obsolete end-to-end test configuration.
+- [x] Remove or replace obsolete end-to-end test configuration.
   - `angular.json` references `e2e/protractor.conf.js`, which is absent.
   - Update the corresponding Protractor instructions in `README.md`.
 
@@ -65,3 +65,4 @@ Follow-up tasks from the code review. These are planned changes, not completed f
 - Demo cleanup: retired URLs (and unknown routes) redirect to the real homepage; removed 13 unused components, demo-only style sections, 29 unreferenced stock images, and Home.mp4. Actual property photos remain available.
 - Removed the unused Maps JavaScript API script; verified the gallery map iframe and both Analytics ID references remain.
 - Test repair: pinned @types/node 20.11.30, fixed Karma coverage reporter, enabled fixture teardown, loaded real UI plugins in the test target, and replaced starter specs with seven passing Chrome tests. Clean npm ci and TypeScript test compilation pass on Node 20.20.2; CI now checks types and runs tests before deployment.
+- Replaced the missing Protractor target with Playwright against the production build. All 12 desktop/mobile Chromium checks pass, including repeated fragments without duplicate Swiper instances, autoplay, keyboard gallery/focus restoration, loaded images, retired redirects, and integration preservation.

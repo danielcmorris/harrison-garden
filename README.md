@@ -34,7 +34,7 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 ## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Run `npx playwright install --with-deps chromium` once, then `npm run test:e2e`. Playwright tests the production build in desktop and mobile Chromium, including fragment navigation, autoplay, keyboard gallery interaction, image loading, retired URL redirects, and preserved integrations. Failure traces and screenshots are written to `test-results/`.
 
 ## Further help
 
