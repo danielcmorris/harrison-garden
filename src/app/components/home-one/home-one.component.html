@@ -118,6 +118,10 @@
         </div>
 
         <div class="swiper-pagination"></div>
+        <button class="slideshow-toggle" type="button" (click)="toggleAutoplay()"
+                [attr.aria-label]="paused ? 'Play slideshow' : 'Pause slideshow'">
+            {{ paused ? 'Play slideshow' : 'Pause slideshow' }}
+        </button>
     </div>
 </section>
 

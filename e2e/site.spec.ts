@@ -76,3 +76,25 @@ test('map and Analytics remain and obsolete scripts are absent', async ({ page }
   await expect(page.locator('script[src*="maps.googleapis.com/maps/api/js"]')).toHaveCount(0);
   await expect(page.locator('script[src*="assets/js/main.js"]')).toHaveCount(0);
 });
+
+test('back to top is keyboard accessible and map has a useful title', async ({ page }) => {
+  await page.goto('/#gallery');
+  const top = page.getByRole('button', { name: 'Back to top' });
+  await expect(top).toBeVisible();
+  await top.focus();
+  await page.keyboard.press('Enter');
+  await expect.poll(() => page.evaluate(() => scrollY)).toBeLessThan(5);
+  await expect(page.locator('iframe')).toHaveAttribute('title', /2723 Harrison Street/);
+  expect(await page.locator('iframe').evaluate(el => el.getBoundingClientRect().height)).toBeGreaterThanOrEqual(320);
+});
+
+test('slideshow can be paused and respects reduced motion', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/');
+  await expect(page.getByRole('button', { name: 'Play slideshow' })).toBeVisible();
+  expect(await page.locator('.home-slides').evaluate(el => (el as any).swiper.autoplay.running)).toBe(false);
+  await page.getByRole('button', { name: 'Play slideshow' }).click();
+  expect(await page.locator('.home-slides').evaluate(el => (el as any).swiper.autoplay.running)).toBe(true);
+  await page.getByRole('button', { name: 'Pause slideshow' }).click();
+  expect(await page.locator('.home-slides').evaluate(el => (el as any).swiper.autoplay.running)).toBe(false);
+});

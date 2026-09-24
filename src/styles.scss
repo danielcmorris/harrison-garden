@@ -775,3 +775,9 @@ Go Top CSS
         background: $main-color;
     }
 }
+
+// Keep keyboard focus visible on links, navigation, slideshow, and popup controls.
+a:focus-visible, button:focus-visible, [tabindex="0"]:focus-visible {
+    outline: 3px solid #247400;
+    outline-offset: 3px;
+}

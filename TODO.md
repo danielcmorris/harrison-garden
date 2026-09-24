@@ -40,7 +40,7 @@ Follow-up tasks from the code review. These are planned changes, not completed f
   - `angular.json` references `e2e/protractor.conf.js`, which is absent.
   - Update the corresponding Protractor instructions in `README.md`.
 
-- [ ] Improve accessibility in the retained components.
+- [x] Improve accessibility in the retained components.
   - Replace generic image alt text with useful descriptions; mark decorative images appropriately.
   - Add an accessible title to the map iframe.
   - Make the back-to-top control a keyboard-accessible button with an accessible name.
@@ -66,3 +66,9 @@ Follow-up tasks from the code review. These are planned changes, not completed f
 - Removed the unused Maps JavaScript API script; verified the gallery map iframe and both Analytics ID references remain.
 - Test repair: pinned @types/node 20.11.30, fixed Karma coverage reporter, enabled fixture teardown, loaded real UI plugins in the test target, and replaced starter specs with seven passing Chrome tests. Clean npm ci and TypeScript test compilation pass on Node 20.20.2; CI now checks types and runs tests before deployment.
 - Replaced the missing Protractor target with Playwright against the production build. All 12 desktop/mobile Chromium checks pass, including repeated fragments without duplicate Swiper instances, autoplay, keyboard gallery/focus restoration, loaded images, retired redirects, and integration preservation.
+- Browser review found the map too short on narrow screens; set a 320px minimum height as part of retained-component accessibility cleanup. Added a slideshow pause/play control and respect for reduced-motion preferences.
+- Accessibility validation: seven unit tests and 16 desktop/mobile browser checks pass, including keyboard back-to-top, gallery focus restoration, slideshow pause/play, and reduced motion. Reviewed desktop/mobile gallery screenshots.
+
+## Additional issues found
+
+- [ ] Fix direct visits to retired demo URLs on the production host: Angular redirects work after the app loads, but the host currently returns HTTP 404 before Angular loads. Ship static redirect landing pages without changing unknown server configuration.
